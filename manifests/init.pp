@@ -7,14 +7,14 @@ class __module__ (
     $config_source      = params_lookup('config_source'),
     $config_template    = params_lookup('config_template'),
     $disabled_hosts     = params_lookup('disabled_hosts'),
-    ) {
+    ) inherits __module__::params {
 
     package { '__module__':
         ensure => $ensure
     }
 
     service { '__module__':
-        ensure      => $ensure,
+        ensure      => $ensure_running,
         enable      => $ensure_enabled,
         hasrestart  => true,
         hasstatus   => true,
