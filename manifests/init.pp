@@ -25,7 +25,8 @@ class __module__ (
         mode    => '0644',
         owner   => 'root',
         group   => 'root',
-        tag     => '__module___config'
+        tag     => '__module___config',
+        notify  => Service['__module__']
     }
 
     # Disable service on this host, if hostname is in disabled_hosts
