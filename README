@@ -1,0 +1,6 @@
+This is a template for a module
+
+USAGE:
+- Copy to a new folder called as the modulename you intend to use.
+- Run -i sed 's/__module__/your_intended_modulename/g' manifests/*.pp
+- Edit and add files as you need
