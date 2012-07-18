@@ -1,0 +1,9 @@
+__module___ensure: true
+__module___ensure_running: true
+__module___ensure_enabled: true
+
+#__module___config_source: puppet:///files/__module__.conf
+#__module___config_template: __module__.conf.erb
+#__module___disabled_hosts:
+#  - testhost1
+
