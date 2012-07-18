@@ -79,7 +79,7 @@ class __module__ (
         }
     } elsif $config_template {
         File <| tag == '__module___config' |> {
-            template => $config_template
+            content => $config_template
         }
     }
 }
