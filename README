@@ -1,4 +1,4 @@
-This is a template for a module in the style of the most credativ modules.
+This is a template for a module in the style of most credativ modules.
 It uses parameterized classes and params_lookup to support multiple backends
 for parameters (e.g. included params file and hiera).
 
