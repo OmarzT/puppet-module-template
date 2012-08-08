@@ -1,13 +1,62 @@
+= credativ puppet module template
+
 This is a template for a module in the style of most credativ modules.
 It uses parameterized classes and params_lookup to support multiple backends
 for parameters (e.g. included params file and hiera).
 
-USAGE:
-======
-- Copy to a new folder called as the modulename you intend to use.
-- Replace __module__ in manifests/*.pp and examples/* with the intended
-  module name.
-  Example:
-  sed -i 's/__module__/your_intended_modulename/g' manifests/*.pp examples/*
-- Edit and add files as you need
-- Replace this README with your own README
+== Template usage
+In order to use the template for a new module, copy the whole template
+directory to a new folder with the desired name. Then proceed as following:
+
+1. Replace __module__ in manifests/*.pp and examples/* with the intended 
+   module name. 
+   Example:
+
+     sed -i 's/__module__/your_intended_modulename/g' manifests/*.pp examples/*
+
+2. Edit and add files as needed.
+
+3. Make sure the main class has defaults for its parameters in
+   manifests/params.pp
+
+4. Make sure to add proper documentation to all directly used classes and
+   replace this README with a file documenting the module and its usage.
+
+== Module usage
+This part describes the usage of modules created with this template.
+Its probably best used as a template for your own documentation.
+
+=== Requirements
+This module template requires the params_lookup function as found in the example42
+puppi module (https://github.com/credativ/puppet-example42lib)
+
+=== Usage
+This module template uses parameterized classes. However, to make it work
+well with ENCs and to support hiera as an external data store, it uses a
+special function to define defaults for each parameter.
+That way, there are several ways to feed parameters into classes created
+with this module.
+
+[*via top-level-scope variables or in hiera*]
+In this case the argument name in the class needs to be prefixed with
+the module name. For example, if a module has a parameter use_xy it can
+be pre-declared like this:
+
+$modulename_use_xy = $value
+
+The same naming scheme works, if parameters are defined in hiera.
+
+[*via parameters*]
+Obviously passing the plain parameters as argument to the class definition
+works too:
+
+    class { 'modulename':
+        use_xy => $value
+    }
+
+In that case no prefixing with the module name is required.
+
+By the way: Each module may have defaults for a certain parameter. Those
+are defined in modulename::params (manifests/params.pp)
+
+
