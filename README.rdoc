@@ -37,16 +37,21 @@ special function to define defaults for each parameter.
 That way, there are several ways to feed parameters into classes created
 with this module.
 
-- *via top-level-scope variables or in hiera*
+==== Top-Level variables / Hiera
 In this case the argument name in the class needs to be prefixed with
 the module name. For example, if a module has a parameter use_xy it can
 be pre-declared like this:
 
     $modulename_use_xy = $value
 
-The same naming scheme works, if parameters are defined in hiera.
+The same naming scheme works if parameters are defined in hiera.
 
-- *via parameters*
+Just *be* *aware* of global parameters: Modules may declare a parameter
+as global. In this case it is not prefixed with the module name.
+That usually makes sense for variables which are shared between various
+different modules.
+
+==== Parameters 
 Obviously passing the plain parameters as argument to the class definition
 works too:
 
@@ -56,7 +61,9 @@ works too:
 
 In that case no prefixing with the module name is required.
 
-By the way: Each module may have defaults for a certain parameter. Those
-are defined in modulename::params (manifests/params.pp)
+==== Defaults
+If no value is specified, in none of the mentioned data sources, modules
+refer to default values. Those are defined in modulename::params
+(manifests/params.pp). Each module shall define the most sensible defaults.
 
 
